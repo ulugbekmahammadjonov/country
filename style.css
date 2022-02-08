@@ -1,0 +1,15 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-img-top {
+    height: 14rem;
+    object-fit: cover;
+}
+
+.card {
+    margin: 10px;
+}
