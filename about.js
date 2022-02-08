@@ -1,7 +1,8 @@
 const queryString = window.location.search;
-const country = queryString.slice(1)
+console.log(queryString);
+const cioc = queryString.slice(1)
 const card = document.querySelector('.card-container')
-const api =`https://restcountries.com/v3.1/name/${country}`
+const api =`https://restcountries.com/v3.1/alpha/${cioc}`
 let loading=false
 
  async function requestAPI(url){
@@ -26,23 +27,22 @@ let loading=false
 
 
 function showResult(data){
-    const {flags, name}=data
+    const {flags, name}=data[0]
     console.log(data)
    
         
         const div = document.createElement('div')
-        let card = `
+        let detail = `
             <div class="card" style="width: 18rem;">
                 <img src="${flags.png}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${name.common}</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="./about.html?${altSpellings[0]}" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
         `;
-        div.innerHTML=card;
+        div.innerHTML=detail;
         
-        cards.appendChild(div);
+        card.appendChild(div);
     }   
     

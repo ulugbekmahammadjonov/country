@@ -1,8 +1,10 @@
  const api ='https://restcountries.com/v3.1/all'
  const info = document.querySelector('.info')
- const cards= document.querySelector('.card-container')
+ const cards= document.querySelector('.card-container');
+ const searchbar = document.querySelector('#searchbar');
 
 let loading=false
+let fullData = [];
 
  async function requestAPI(url){
     //  document.querySelector('.card').textContent='loading'
@@ -14,6 +16,7 @@ let loading=false
         }
         const data = await request.json()
         showResult(data)
+        fullData = data
         loading=false
     }
     catch(err){
@@ -27,7 +30,7 @@ let loading=false
 function showResult(data){
     const allCountry=data
     allCountry.forEach((country)=>{
-        const {name, altSpellings, flags}=country
+        const {name, cioc, flags}=country
         const div = document.createElement('div')
         let card = `
             <div class="card" style="width: 18rem;">
@@ -35,7 +38,7 @@ function showResult(data){
                 <div class="card-body">
                     <h5 class="card-title">${name.common}</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="./about.html?${altSpellings[name.common]}" class="btn btn-primary">Go somewhere</a>
+                    <a href="./about.html?${cioc}" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
         `;
@@ -45,3 +48,15 @@ function showResult(data){
     })
     
 }
+
+
+searchbar.addEventListener('input', () => {
+    let searchText = searchbar.value.toUpperCase();
+    let data = fullData.map((item) => {
+        if (item.name.common.includes(searchText) || item.name.official.includes(searchText)) {
+            return item;
+        }
+    })
+    console.log('gfdsgh', data)
+    showResult(data);
+})
