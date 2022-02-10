@@ -12,30 +12,27 @@
 </head>
 
 <body>
-  <h1 class="display-4">COUNTRIES</h1>
-  <div class="container container1">
+  <h1 class="display-4 container">Where in the world?</h1>
+  <hr>
+  <div class="container container-nav">
 
     <form id="search-form">
       <input type="text" name="searchBar" id="searchbar" placeholder="search for a country">
     </form>
       <form >
         <select name="regions" id="regions" class="select-region">
-          <option value="0" selected>Sort by Regions</option>
-          <option value="afrika">Afrika</option>
-          <option value="america">America</option>
-          <option value="asia">Asia</option>
-          <option value="europa">Europa</option>
-          <option value="oceaniya">Oceaniya</option>
+          <option value="all" selected>Sort by Region</option>
+          <option value="Africa">Africa</option>
+          <option value="Americas">Americas</option>
+          <option value="Asia">Asia</option>
+          <option value="Europe">Europe</option>
+          <option value="Oceania">Oceania</option>
         </select>
       </form>
   </div>
-  <hr>
-  <div class="info"></div>
-  <div class="card-container mx-auto container">
-    
-  </div>
-
-
+  
+  <div class="loading"></div>
+  <div class="card-container mx-auto container"></div>
   <script src="app.js"></script>
 </body>
 
