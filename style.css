@@ -1,8 +1,15 @@
+.container1{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
 .card-container {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    
+    /* justify-content: space-between; */
 }
 
 .card-img-top {
@@ -12,4 +19,7 @@
 
 .card {
     margin: 10px;
+}
+.hidden{
+  display: none;
 }

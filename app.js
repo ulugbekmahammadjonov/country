@@ -1,8 +1,10 @@
  const api ='https://restcountries.com/v3.1/all'
  const info = document.querySelector('.info')
  const cards= document.querySelector('.card-container');
+ const card = document.querySelector('.card')
  const searchbar = document.querySelector('#searchbar');
-
+const searchForm = document.querySelector('#search-form')
+const select = document.querySelector('.select-region')
 let loading=false
 let fullData = [];
 
@@ -30,8 +32,10 @@ let fullData = [];
 function showResult(data){
     const allCountry=data
     allCountry.forEach((country)=>{
-        const {name, cioc, flags}=country
+        const {name, cioc, flags,region}=country
         const div = document.createElement('div')
+        div.setAttribute('id',`${name.common}`)
+        div.setAttribute('data-set', `${region}`)
         let card = `
             <div class="card" style="width: 18rem;">
                 <img src="${flags.png}" class="card-img-top" alt="...">
@@ -49,14 +53,35 @@ function showResult(data){
     
 }
 
+ 
 
-searchbar.addEventListener('input', () => {
-    let searchText = searchbar.value.toUpperCase();
-    let data = fullData.map((item) => {
-        if (item.name.common.includes(searchText) || item.name.official.includes(searchText)) {
-            return item;
+searchbar.addEventListener('input', (e) => {
+    let searchStr =e.target.value.toLowerCase()
+    for(i=1;i<cards.childNodes.length;i++){
+       const country = cards.childNodes[i].getAttribute('id').toLowerCase()
+       if(!country.includes(searchStr)){
+           cards.childNodes[i].classList.add("hidden")
+    
+       }else{
+        cards.childNodes[i].classList.remove("hidden")
+       }
+
+
+    }
+    
+})
+
+select.addEventListener('change',(e)=>{
+    const region = select.value.toLowerCase()
+    for(i=1;i<cards.childNodes.length;i++){
+        const country = cards.childNodes[i].getAttribute('data-set').toLowerCase()
+        if(!country.includes(region)){
+            cards.childNodes[i].classList.add("hidden")
+     
+        }else{
+         cards.childNodes[i].classList.remove("hidden")
         }
-    })
-    console.log('gfdsgh', data)
-    showResult(data);
+ 
+ 
+     }
 })
