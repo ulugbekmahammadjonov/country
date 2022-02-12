@@ -24,7 +24,6 @@ function loading(isLoading) {
 }
 
 async function requestAPI(url) {
-  //  document.querySelector('.card').textContent='loading'
   try {
     const request = await fetch(url);
     if (!request.ok) {

@@ -21,12 +21,20 @@
   padding: 12px 220px 12px 25px;
   border-radius: 10px;
   font-size: 20px;
+  border: 2px solid #007fff;
+}
+#searchbar:focus{
+  outline: none;
 }
 
 .select-region {
   padding: 12px 25px 12px 25px;
   font-size: 20px;
   border-radius: 10px;
+  border: 2px solid #007fff;
+}
+.select-region:focus{
+  outline: none;
 }
 
 .card-img-top {
@@ -43,4 +51,22 @@
 
 .hidden {
   display: none;
+}
+
+.back-btn-container{
+  margin-top: 40px;
+}
+.back-btn{
+  text-decoration: none;
+  border: 2px solid #007fff;
+  background-color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+.back-btn:hover{
+   background-color: #007fff;
+   color: #fff;
+}
+.back-btn:active{
+  opacity: 0.8;
 }
